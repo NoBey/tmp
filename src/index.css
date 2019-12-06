@@ -1,0 +1,54 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Menlo,"Ubuntu Mono",Consolas,"Courier New",Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
+}
+#app{
+ width: 100vw;
+ height: 100vh;
+ display: flex;
+ flex-direction: row;
+ align-items: center;
+ justify-content: center;
+}
+
+#left{
+    flex: 1;
+    height: 100vh;
+    box-sizing: border-box;
+    padding: 10px;
+    overflow: scroll;
+}
+#left::-webkit-scrollbar {
+    width: 9px;
+}
+#left::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(102,128,153,.1);
+}
+
+#left::-webkit-scrollbar-thumb, #preview-column ::-webkit-scrollbar-thumb {
+    background: rgba(102,128,153,.2);
+}
+#left::-webkit-scrollbar-track {
+    background: rgba(102,128,153,.1);
+}
+#right{
+    flex: 1;
+    height: 100vh;
+    overflow: scroll;
+    box-sizing: border-box;
+    padding: 10px;
+}
+#right::-webkit-scrollbar {
+    width: 9px;
+}
+#right::-webkit-scrollbar-thumb:window-inactive {
+    background: rgba(102,128,153,.1);
+}
+
+#right::-webkit-scrollbar-thumb, #preview-column ::-webkit-scrollbar-thumb {
+    background: rgba(102,128,153,.2);
+}
+#right::-webkit-scrollbar-track {
+    background: rgba(102,128,153,.1);
+}
