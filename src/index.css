@@ -12,43 +12,48 @@ body{
  justify-content: center;
 }
 
+/* ::selection {
+    color: #fff;
+    background: #888;
+} */
+
+::-webkit-scrollbar
+{
+    width: 9px;
+}
+ 
+/*定义滚动条轨道 内阴影+圆角*/
+::-webkit-scrollbar-track
+{
+    background: rgba(102,128,153,.1);
+}
+ 
+/*定义滑块 内阴影+圆角*/
+::-webkit-scrollbar-thumb
+{
+    background: rgba(102,128,153,.2);
+
+}
+
 #left{
     flex: 1;
     height: 100vh;
     box-sizing: border-box;
     padding: 10px;
-    overflow: scroll;
-}
-#left::-webkit-scrollbar {
-    width: 9px;
-}
-#left::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(102,128,153,.1);
+    overflow: hidden;
 }
 
-#left::-webkit-scrollbar-thumb, #preview-column ::-webkit-scrollbar-thumb {
-    background: rgba(102,128,153,.2);
-}
-#left::-webkit-scrollbar-track {
-    background: rgba(102,128,153,.1);
-}
+
 #right{
     flex: 1;
     height: 100vh;
-    overflow: scroll;
+    overflow-y: scroll;
+    overflow-x: hidden;
     box-sizing: border-box;
     padding: 10px;
 }
-#right::-webkit-scrollbar {
-    width: 9px;
-}
-#right::-webkit-scrollbar-thumb:window-inactive {
-    background: rgba(102,128,153,.1);
-}
 
-#right::-webkit-scrollbar-thumb, #preview-column ::-webkit-scrollbar-thumb {
-    background: rgba(102,128,153,.2);
-}
-#right::-webkit-scrollbar-track {
-    background: rgba(102,128,153,.1);
+.ace_content{
+    padding: 10px;
+    box-sizing: border-box;
 }

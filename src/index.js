@@ -5,7 +5,7 @@ import React, { useState, Component, useLayoutEffect } from "react";
 import ReactDOM from "react-dom";
 import AceEditor from "react-ace";
 import "ace-builds/src-noconflict/mode-markdown";
-import "ace-builds/src-noconflict/theme-dawn";
+import "ace-builds/src-noconflict/theme-github";
 
 var showdown = require("showdown"),
   converter = new showdown.Converter();
@@ -31,6 +31,32 @@ var showdown = require("showdown"),
 // 字体
 // font-family: Menlo,"Ubuntu Mono",Consolas,"Courier New",Microsoft Yahei,Hiragino Sans GB,WenQuanYi Micro Hei,sans-serif;
 
+// l.addEventListener('scroll', ()=>{
+//   if (currentTab !== 1) return
+//   r.scrollTop = l.scrollTop * scale
+// })
+// r.addEventListener('scroll', ()=>{
+//   if (currentTab !== 2) return
+//   l.scrollTop = r.scrollTop / scale
+// })
+// l.addEventListener('mouseover', ()=>{
+//   // 1 表示表示当前鼠标位于 .left元素范围内
+//   currentTab = 1
+// })
+// r.addEventListener('mouseover', ()=>{
+//   // 2 表示表示当前鼠标位于 .right元素范围内
+//     currentTab = 2
+// })
+
+const leftScroll = e => {
+   let p = document.querySelector('#left .ace_scrollbar').scrollTop / (document.querySelector('#left .ace_scrollbar-inner').clientHeight -  document.querySelector('#left .ace_scrollbar').clientHeight)
+   document.getElementById('right').scrollTop =  document.querySelector('#left .ace_scrollbar').scrollTop
+}
+
+const rightScroll = e => {
+  document.querySelector('#left .ace_scrollbar').scrollTop =  e.target.scrollTop
+}
+
 function Example() {
   // Declare a new state variable, which we'll call "count"
   const [md, setMd] = useState('');
@@ -38,11 +64,12 @@ function Example() {
     setMd(newValue)
   }
   return (
-    <div id={"app"}>
+    <div id={"app"}
+    >
         <AceEditor
           mode="markdown"
           height={'100vh'}
-          theme="dawn"
+          theme="github"
           width={"100%"}
           fontSize={16}
           showGutter={false}
@@ -50,12 +77,15 @@ function Example() {
           value={md}
           onChange={onChange}
           wrapEnabled={true}
-          debounceChangePeriod={300}
+          debounceChangePeriod={20}
           name="left"
-          editorProps={{ $blockScrolling: true }}
+      
+          onScroll={leftScroll}
         />
 
-      <div id="right"  className={'markdown-body'} dangerouslySetInnerHTML={{__html: converter.makeHtml(md)}}></div>
+      <div id="right" onScroll={rightScroll} className={'markdown-body'} >
+        <div dangerouslySetInnerHTML={{__html: converter.makeHtml(md)}} />
+      </div>
     </div>
   );
 }
