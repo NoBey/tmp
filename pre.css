@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.slogan,
+.star {
+  visibility: hidden;
+}
+
+.mask {
+  z-index: 123123;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background: none no-repeat scroll 0 0 #34283F;
+}
+
+button {
+  color: #fff;
+  font-size: 14px;
+  padding: 10px 20px;
+  border: 1px solid #fff;
+  background: transparent;
+  border-radius: 3px;
+}
+
+.hide {
+  display: none;
+}
+
+.santa-claus-preview {
+  height: 60vh;
+  background: none repeat scroll 0 0 #34283F;
+}
+
+.code-preview {
+  height: 40vh;
+  overflow: auto;
+  position: relative;
+}
+
+@font-face {
+  font-family: 'Mountains of Christmas';
+  font-style: normal;
+  src: local("Mountains of Christmas"), local("MountainsofChristmas-Regular"), url(https://fonts.gstatic.com/s/mountainsofchristmas/v8/dVGBFPwd6G44IWDbQtPewylJhLDHyIrT3I5b5eGTHmw.woff2) format("woff2");
+}
+
+.slogan {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1.0;
+  }
+
+  to {
+    opacity: 0.0;
+  }
+}

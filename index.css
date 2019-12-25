@@ -1,0 +1,359 @@
+/*reset*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.code-preview {
+  height: 40vh;
+  padding: 15px;
+  overflow: auto;
+  position: relative;
+}
+
+@font-face {
+  font-family: 'Mountains of Christmas';
+  font-style: normal;
+  src: local("Mountains of Christmas"), local("MountainsofChristmas-Regular"), url(https://fonts.gstatic.com/s/mountainsofchristmas/v8/dVGBFPwd6G44IWDbQtPewylJhLDHyIrT3I5b5eGTHmw.woff2) format("woff2");
+}
+
+.slogan {
+  display: flex;
+  justify-content: center;
+}
+
+.slogan p {
+  color: #f8e7dc;
+  font-family: 'Mountains of Christmas';
+  position: fixed;
+  z-index: 999;
+  font-size: 38px;
+  margin-top: 30px;
+}
+
+.santa-claus-preview {
+  background: none repeat scroll 0 0 #34283F;
+  position: relative;
+  color: #d9604b;
+  text-align: center;
+  display: flex;
+  height: 60vh;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  box-shadow: 0px 3px 10px #ccc;
+}
+
+.santa {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -195px;
+}
+
+.hat {
+  display: inline-block;
+  position: relative;
+  text-align: center;
+  vertical-align: center;
+}
+
+.hat-top-half-pt {
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  width: 120px;
+  height: 60px;
+  background: #d9604b;
+  border-top: 5px solid #964034;
+  border-left: 5px solid #964034;
+  border-right: 5px solid #964034;
+  border-top-left-radius: 80px;
+  border-bottom-right-radius: 15px;
+}
+
+.hat-top-half-pt::before {
+  content: '';
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 5px solid #964034;
+  background: #ffffff;
+  position: absolute;
+  right: -20px;
+  top: -20px;
+}
+
+.hat-bottom-half-pt {
+  width: 140px;
+  height: 30px;
+  border-radius: 10px;
+  border: 5px solid #964034;
+  background: #ffffff;
+  position: relative;
+  margin-top: -5px;
+}
+
+.head {
+  position: relative;
+  display: inline-block;
+  width: 120px;
+  height: 60px;
+  background: #ffeeda;
+  border: 5px solid #964034;
+}
+
+.head .eyes {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 80px;
+  margin: 20px auto 0 auto;
+}
+
+.head .eyes .eye {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #964034;
+}
+
+.head::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid #964034;
+  position: absolute;
+  left: -28px;
+  top: 5px;
+  background: #ffeeda;
+}
+
+.head::after {
+  content: '';
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid #964034;
+  position: absolute;
+  right: -28px;
+  top: 5px;
+  background: #ffeeda;
+}
+
+.head .nose {
+  width: 20px;
+  height: 20px;
+  background: #d9604b;
+  border: 5px solid #964034;
+  border-radius: 10px;
+  display: inline-block;
+  margin-top: 3px;
+}
+
+.head .nose .mouth {
+  display: flex;
+  justify-content: center;
+  width: 40px;
+  margin-top: 10px;
+  margin-left: -15px;
+  z-index: 5;
+  position: relative;
+}
+
+.head .nose .mouth .lf-mouth {
+  height: 20px;
+  width: 15px;
+  border-right: 5px solid #964034;
+  border-bottom: 5px solid #964034;
+  border-bottom-right-radius: 20px;
+}
+
+.head .nose .mouth .rt-mouth {
+  height: 20px;
+  width: 15px;
+  border-left: 5px solid #964034;
+  border-bottom: 5px solid #964034;
+  border-bottom-left-radius: 20px;
+}
+
+.beard {
+  width: 140px;
+  height: auto;
+  margin-top: -2px;
+}
+
+.beard .beard-1 {
+  height: 35px;
+  position: relative;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #ffffff;
+  border: 4px solid #964034;
+  z-index: 4;
+}
+
+.beard .beard-1::after {
+  content: '';
+  width: 98px;
+  position: absolute;
+  bottom: -7px;
+  height: 10px;
+  background: #ffffff;
+  left: 17px;
+  z-index: 6;
+}
+
+.beard .beard-2 {
+  height: 35px;
+  width: 110px;
+  position: relative;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #ffffff;
+  border: 4px solid #964034;
+  margin-left: 15px;
+  margin-top: -7px;
+  z-index: 3;
+}
+
+.beard .beard-2::after {
+  content: '';
+  width: 56px;
+  position: absolute;
+  bottom: -6px;
+  height: 10px;
+  background: #ffffff;
+  left: 22px;
+  z-index: 6;
+}
+
+.beard .beard-3 {
+  height: 35px;
+  width: 70px;
+  position: relative;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #ffffff;
+  border: 4px solid #964034;
+  margin-left: 35px;
+  margin-top: -7px;
+  z-index: 2;
+}
+
+.beard .beard-3::after {
+  content: '';
+  width: 22px;
+  position: absolute;
+  bottom: -6px;
+  height: 10px;
+  background: #ffffff;
+  left: 20px;
+  z-index: 6;
+}
+
+.beard .beard-4 {
+  height: 25px;
+  width: 32px;
+  position: relative;
+  border-bottom-left-radius: 35px;
+  border-bottom-right-radius: 35px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  background: #ffffff;
+  border: 4px solid #964034;
+  margin-left: 54px;
+  margin-top: -5px;
+  z-index: 1;
+}
+
+.dressing {
+  background: #d9604b;
+  width: 140px;
+  height: 140px;
+  margin-top: -85px;
+  position: relative;
+}
+
+.dressing .lf-arm {
+  position: absolute;
+  height: 140px;
+  width: 50px;
+  background: #d9604b;
+  border-left: 4px solid #964034;
+  transform: rotate(12deg);
+  left: -15px;
+}
+
+.dressing .rt-arm {
+  position: absolute;
+  height: 140px;
+  width: 50px;
+  background: #d9604b;
+  border-right: 4px solid #964034;
+  transform: rotate(-12deg);
+  right: -15px;
+}
+
+.dressing .line {
+  height: 60px;
+  position: absolute;
+  bottom: 0;
+}
+
+.dressing .lf-line {
+  border-left: 4px solid #964034;
+  transform: rotate(-12deg);
+  left: 20px;
+}
+
+.dressing .rt-line {
+  border-right: 4px solid #964034;
+  transform: rotate(12deg);
+  right: 20px;
+}
+
+.star {
+  position: absolute;
+  font-size: 36px;
+}
+
+.star.star1 {
+  left: 20px;
+  top: 100px;
+}
+
+.star.star2 {
+  left: 35px;
+  top: 320px;
+}
+
+.star.star3 {
+  left: 50px;
+  top: 200px;
+}
+
+.star.star4 {
+  left: 300px;
+  top: 300px;
+}
+
+.star.star5 {
+  left: 280px;
+  top: 200px;
+}
+
+.star.star6 {
+  left: 300px;
+  top: 100px;
+}
