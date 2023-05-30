@@ -74,24 +74,24 @@ router.post("/upload", koaBody({ multipart: true }), async (ctx) => {
 
   console.log("图片内容", output);
 
-//   const completion = await openai.createCompletion({
-//     model: "text-davinci-003",
-//     prompt: `${output}
-//   把上面的内容翻译成中文, 使用关键内容写一篇文案, 使用中文回复, 200字
-//   `,
-//     temperature: 1,
-//     max_tokens: 256,
-//     top_p: 1,
-//     frequency_penalty: 0,
-//     presence_penalty: 0,
-//   });
+  const completion = await openai.createCompletion({
+    model: "text-davinci-003",
+    prompt: `${output}
+  把上面的内容翻译成中文, 使用关键内容写一篇文案, 使用中文回复, 200字
+  `,
+    temperature: 1,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  });
 
-//   console.log(completion.data.choices);
+  console.log(completion.data.choices);
 
   
     ctx.status = 200;
     ctx.type = "application/json";
-    ctx.body = { msg: "File uploaded successfully.", data: output };
+    ctx.body = { msg: "File uploaded successfully.", data: completion.data.choices[0].text };
   });
 
 app.use(router.routes()).use(router.allowedMethods());
