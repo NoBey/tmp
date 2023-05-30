@@ -9,7 +9,7 @@ const generatePreview = require('ffmpeg-generate-video-preview');
 const Replicate = require("replicate");
 const fetch = require("cross-fetch")
 const { Configuration, OpenAIApi } = require( "openai")
-import { apiKey , REPLICATE_API_TOKEN } from "../.key";
+const { apiKey , REPLICATE_API_TOKEN } = require("../.key");
 
 const configuration = new Configuration({
   apiKey,
