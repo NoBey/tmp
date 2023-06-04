@@ -39,9 +39,7 @@ router.get("/gpt", async (ctx) => {
   ctx.status = 200;
   ctx.type = "application/json";
   ctx.body = { msg: "ok", data: completion.data.choices[0].text };
-  ctx.body = {
-    data: text,
-  };
+  
 });
 
 router.post("/upload", koaBody({ multipart: true }), async (ctx) => {
