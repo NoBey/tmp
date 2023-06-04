@@ -22,6 +22,52 @@ router.get("/", async (ctx) => {
   };
 });
 
+router.post("/img2text", koaBody({ multipart: true }), async (ctx) => {
+  const file = ctx.request.files.file;
+
+  const filePath = path.join(__dirname, "uploads", `${Math.random() * 999}_${file.originalFilename}`);
+
+  try {
+    await fs.mkdir(path.join(__dirname, "uploads"));
+    console.log(`Created directory: ${path.join(__dirname, "uploads")}`);
+  } catch (err) {
+    if (err.code !== "EEXIST") {
+      throw err;
+    }
+  }
+
+  await fs.copyFile(file.filepath, filePath);
+  console.log(`Saved file: ${filePath}`);
+
+  const data = await fs.readFile(filePath);
+  // Convert the buffer into a base64-encoded string
+  const base64 = data.toString("base64");
+  // Set MIME type for PNG image
+  const mimeType = "image/png";
+  // Create the data URI
+  const dataURI = `data:${mimeType};base64,${base64}`;
+
+  const replicate = new Replicate({
+    auth: REPLICATE_API_TOKEN, //process.env.REPLICATE_API_TOKEN,
+    fetch,
+  });
+
+  const output = await replicate.run(
+    // "methexis-inc/img2prompt:50adaf2d3ad20a6f911a8a9e3ccf777b263b8596fbd2c8fc26e8888f8a0edbb5",
+    "salesforce/blip:2e1dddc8621f72155f24cf2e0adbde548458d3cab9f00c0139eea840d0ac4746",
+    {
+      input: {
+        image: dataURI,
+      },
+    }
+  );
+
+  console.log("图片内容", output);
+
+  ctx.body = { msg: "ok", data: output };
+  
+});
+
 router.get("/gpt", async (ctx) => {
   const { prompt } = ctx.request.query;
   console.log(prompt);
@@ -39,7 +85,7 @@ router.get("/gpt", async (ctx) => {
   ctx.status = 200;
   ctx.type = "application/json";
   ctx.body = { msg: "ok", data: completion.data.choices[0].text };
-  
+
 });
 
 router.post("/upload", koaBody({ multipart: true }), async (ctx) => {
