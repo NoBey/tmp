@@ -9,7 +9,7 @@ const generatePreview = require("ffmpeg-generate-video-preview");
 const Replicate = require("replicate");
 const fetch = require("cross-fetch");
 const { Configuration, OpenAIApi } = require("openai");
-const { apiKey, REPLICATE_API_TOKEN } = require("../.key");
+const { apiKey, REPLICATE_API_TOKEN, PROT } = require("../.key");
 
 const configuration = new Configuration({
   apiKey,
@@ -166,6 +166,6 @@ router.post("/upload", koaBody({ multipart: true }), async (ctx) => {
 
 app.use(router.routes()).use(router.allowedMethods());
 
-app.listen(3000, () =>
-  console.log("Server is running at http://localhost:3000")
+app.listen(PROT, () =>
+  console.log("Server is running at http://localhost:" + PROT)
 );
