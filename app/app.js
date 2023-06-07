@@ -179,7 +179,7 @@ try{
   const options = {
     key: readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.key'),
     cert: readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.cer'),
-    secureProtocol: 'TLSv1.2_method' 
+    secureProtocol: 'TLSv1.2' 
   };
   
   https.createServer(options, app.callback()).listen(443);
