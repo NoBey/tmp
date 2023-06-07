@@ -2,6 +2,7 @@ const Koa = require("koa");
 const Router = require("koa-router");
 const path = require("path");
 const fs = require("fs").promises;
+const { readFileSync } = require("fs");
 const { koaBody } = require("koa-body");
 const app = new Koa();
 const router = new Router();
@@ -176,8 +177,8 @@ app.listen(PROT, () =>
 
 try{
   const options = {
-    key: fs.readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.key'),
-    cert: fs.readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.cer')
+    key: readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.key'),
+    cert: readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.cer')
   };
   
   https.createServer(options, app.callback()).listen(443);
