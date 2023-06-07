@@ -10,6 +10,8 @@ const Replicate = require("replicate");
 const fetch = require("cross-fetch");
 const { Configuration, OpenAIApi } = require("openai");
 const { apiKey, REPLICATE_API_TOKEN, PROT } = require("../.key");
+const https = require('https');
+
 
 const configuration = new Configuration({
   apiKey,
@@ -169,3 +171,18 @@ app.use(router.routes()).use(router.allowedMethods());
 app.listen(PROT, () =>
   console.log("Server is running at http://localhost:" + PROT)
 );
+
+
+
+try{
+  const options = {
+    key: fs.readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.key'),
+    cert: fs.readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.cer')
+  };
+  
+  https.createServer(options, app.callback()).listen(443);
+}
+catch(err){
+  console.log('https err', err)
+}
+
