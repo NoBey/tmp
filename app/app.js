@@ -179,11 +179,10 @@ try{
   const options = {
     key: readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.key'),
     cert: readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.cer'),
-    requestCert: true,
     ca: [ readFileSync('/root/.acme.sh/ss4.nobey.cn_ecc/ca.cer') ]
   };
   
-  https.createServer(options, app.callback()).listen(443);
+  // https.createServer(options, app.callback()).listen(443);
 }
 catch(err){
   console.log('https err', err)
@@ -194,3 +193,5 @@ catch(err){
 // [Wed Jun  7 04:25:12 UTC 2023] Your cert key is in: /root/.acme.sh/ss4.nobey.cn_ecc/ss4.nobey.cn.key
 // [Wed Jun  7 04:25:12 UTC 2023] The intermediate CA cert is in: /root/.acme.sh/ss4.nobey.cn_ecc/ca.cer
 // [Wed Jun  7 04:25:12 UTC 2023] And the full chain certs is there: /root/.acme.sh/ss4.nobey.cn_ecc/fullchain.cer
+
+
