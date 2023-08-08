@@ -72,28 +72,29 @@ router.post("/img2text", koaBody({ multipart: true }), async (ctx) => {
 });
 
 router.get("/chat", async (ctx) => {
-  const { prompt } = ctx.request.query;
-  console.log(prompt);
+  const { prompt, _temperature = '1', _max_tokens = '256', _top_p = '1', _frequency_penalty = '0', _presence_penalty = '0' } = ctx.request.query;
+  console.log(prompt, _temperature, _max_tokens, _top_p, _frequency_penalty, _presence_penalty);
+  
   const response = await openai.createChatCompletion({
     model: "gpt-3.5-turbo",
     messages: [
       {
         role: "user",
-        content: "1+1=?",
+        content: prompt,
       },
     ],
-    temperature: 1,
-    max_tokens: 256,
-    top_p: 1,
-    frequency_penalty: 0,
-    presence_penalty: 0,
+    temperature: Number(_temperature),
+    max_tokens: Number(_max_tokens),
+    top_p: Number(_top_p),
+    frequency_penalty: Number(_frequency_penalty),
+    presence_penalty: Number(_presence_penalty),
   });
   console.log(response);
   ctx.body = response.data.choices[0].message.content;
 });
 
 router.get("/gpt", async (ctx) => {
-  const { prompt } = ctx.request.query;
+  const { prompt, ...opt } = ctx.request.query;
   console.log(prompt);
 
   const completion = await openai.createCompletion({
@@ -104,6 +105,7 @@ router.get("/gpt", async (ctx) => {
     top_p: 1,
     frequency_penalty: 0,
     presence_penalty: 0,
+    ...opt
   });
 
   ctx.status = 200;
