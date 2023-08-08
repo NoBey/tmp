@@ -71,6 +71,27 @@ router.post("/img2text", koaBody({ multipart: true }), async (ctx) => {
   
 });
 
+router.get("/chat", async (ctx) => {
+  const { prompt } = ctx.request.query;
+  console.log(prompt);
+  const response = await openai.createChatCompletion({
+    model: "gpt-3.5-turbo",
+    messages: [
+      {
+        role: "user",
+        content: "1+1=?",
+      },
+    ],
+    temperature: 1,
+    max_tokens: 256,
+    top_p: 1,
+    frequency_penalty: 0,
+    presence_penalty: 0,
+  });
+  console.log(response);
+  ctx.body = response.data.choices[0].message.content;
+});
+
 router.get("/gpt", async (ctx) => {
   const { prompt } = ctx.request.query;
   console.log(prompt);
