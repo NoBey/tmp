@@ -13,7 +13,6 @@ const { Configuration, OpenAIApi } = require("openai");
 const { apiKey, REPLICATE_API_TOKEN, PROT } = require("../.key");
 const https = require('https');
 
-
 const configuration = new Configuration({
   apiKey,
 });
@@ -88,7 +87,8 @@ router.get("/chat", async (ctx) => {
     top_p: Number(_top_p),
     frequency_penalty: Number(_frequency_penalty),
     presence_penalty: Number(_presence_penalty),
-  });
+  }, { timeout: 60000,}
+);
   console.log(response);
   ctx.body = response.data.choices[0].message.content;
 });
