@@ -12,7 +12,7 @@ const fetch = require("cross-fetch");
 const { Configuration, OpenAIApi } = require("openai");
 const apiKey = process.env.API_KEY;
 const REPLICATE_API_TOKEN = process.env.REPLICATE_API_TOKEN;
-const PROT = process.env.TMP_PROT;
+const PROT = process.env.PORT || process.env.TMP_PROT;
 const https = require('https');
 
 const configuration = new Configuration({
